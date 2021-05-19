@@ -11,7 +11,7 @@ It is a single page application (SPA) built with react that allows users to add,
 
 ### Homepage
 !['Homepage']
-(https://github.com/kukim96/scheduler/blob/master/docs/Homepage.png?raw=true)
+(https://github.com/kukim96/scheduler/blob/master/docs/Homepage.png)
 
 ## Application Stack
 Front-End: React, JSX, Axios, HTML, SCSS
