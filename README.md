@@ -12,6 +12,9 @@ It is a single page application (SPA) built with react that allows users to add,
 ### Homepage
 !['Homepage'](docs/Homepage.png?raw=true)
 
+### Adding an interview
+!['AddInterview'](docs/AddInterview.gif)
+
 ## Application Stack
 Front-End: React, JSX, Axios, HTML, SCSS
 
