@@ -15,6 +15,12 @@ It is a single page application (SPA) built with react that allows users to add,
 ### Adding an interview
 !['AddInterview'](docs/AddInterview.gif)
 
+### Editing an interview
+!['EditInterview'](docs/EditInterview.gif)
+
+### Canceling an interview
+!['DeleteInterview'](docs/DeleteInterview.gif)
+
 ## Application Stack
 Front-End: React, JSX, Axios, HTML, SCSS
 
