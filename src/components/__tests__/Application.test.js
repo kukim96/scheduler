@@ -124,5 +124,60 @@ describe("Application", () => {
     everytime there is an interview booked, so the app is server side logic */
   });
 
-  
+  it("shows the save error when failing to save an appointment", async () => {
+    axios.put.mockRejectedValueOnce();
+
+    // 1. Render the Application.
+    const { container } = render(<Application/>);
+
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+
+    const appointment = getAllByTestId(container, "appointment")[0];
+
+    // 2. Book an appointment
+    fireEvent.click(getByAltText(appointment, "Add"));
+
+    fireEvent.change(getByPlaceholderText(appointment, /enter student name/i), {
+      target: { value: "Lydia Miller-Jones" }
+    });
+
+    fireEvent.click(getByAltText(appointment, "Sylvia Palmer"));
+
+    fireEvent.click(getByText(appointment, "Save"));
+
+    // 3. Check that "Saving" is being displayed.
+    expect(getByText(appointment, ("Saving"))).toBeInTheDocument();
+
+    await waitForElement(() => getByText(appointment, /Error while trying to save/i));
+
+    // 4. Check that we can close the error message
+    fireEvent.click(getByAltText(appointment, "Close"));
+    expect(getByPlaceholderText(appointment, /enter student name/i)).toBeInTheDocument();
+  });
+
+  it("shows the delete error when failing to delete an existing appointment", async () => {
+    axios.delete.mockRejectedValueOnce();
+
+    // 1. Render the Application.
+    const { container } = render(<Application/>);
+
+    await waitForElement(() => getByText(container, "Archie Cohen"));
+
+    const appointment = getAllByTestId(container, "appointment").find(appointment => 
+      queryByText(appointment, "Archie Cohen")
+    );
+
+    // 2. Delete an appointment
+    fireEvent.click(getByAltText(appointment, "Delete"));
+    fireEvent.click(getByText(appointment, "Confirm"));
+
+    // 3. Check that "Deleting" is being displayed.
+    expect(getByText(appointment, ("Deleting"))).toBeInTheDocument();
+
+    await waitForElement(() => getByText(appointment, /Error while trying to delete/i))
+
+    // 4. Check that we can close the error message
+    fireEvent.click(getByAltText(appointment, "Close"));
+    expect(getByText(appointment, "Archie Cohen")).toBeInTheDocument();
+  });
 })
