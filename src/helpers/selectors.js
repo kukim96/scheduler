@@ -1,3 +1,4 @@
+// get list of appointment for selected day
 export function getAppointmentsForDay(state, day) {
   const theDays = state.days.find(element => element.name === day);
 
@@ -17,6 +18,7 @@ export function getAppointmentsForDay(state, day) {
  return dailyAppointments;
 }
 
+// get list of interviewers for selected day
 export const getInterviewersForDay = (state, day) => {
   const dayObj = state.days.find(element => element.name === day);
 
@@ -35,6 +37,7 @@ export const getInterviewersForDay = (state, day) => {
   return dailyInterviewers;
 }
 
+// get list of interviews for selected day
 export function getInterview(state, interview) {
   if (!interview) {
     return null;

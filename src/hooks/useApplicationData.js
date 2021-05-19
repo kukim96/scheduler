@@ -23,6 +23,7 @@ export default function useApplicationData() {
     })
   }, []);
 
+  // remaining spots updated after any changes that are made
   useEffect(() => {
     axios.get("/api/days")
       .then((days) => setState((state) => ({...state, days: days.data})));

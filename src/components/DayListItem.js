@@ -5,11 +5,13 @@ import classnames from "classnames";
 import "components/DayListItem.scss"
 
 export default function DayListItem(props) {
+  // class depending on props
   const DayListItemClass = classnames("day-list__item", {
     "day-list__item--selected": props.selected,
     "day-list__item--full": props.spots === 0
   })
 
+  // return message with num of spots available
   const formatSpots = (spots) => {
     if (spots === 0) {
       return "no spots remaining"

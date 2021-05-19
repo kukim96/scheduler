@@ -25,7 +25,7 @@ export default function Appointment(props) {
   const { mode, transition, back } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
-
+  // prop into Form component
   function save(name, interviewer) {
     const interview = {
       student: name,
@@ -37,6 +37,7 @@ export default function Appointment(props) {
       .catch(() => transition(ERROR_SAVE, true));
   }
 
+  // prop into Confirm component
   function deleteInterview() {
     transition(DELETE, true);
 
